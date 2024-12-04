@@ -21,7 +21,7 @@ async function getAllCount() {
     const data2 = await response2.json();
     // Afficher le nombre
     vehiculeCount.innerText = `${data2.count}`;
-    
+
     // Récupérer les informations pour le nombre de planètes
     const response3 = await fetch("https://swapi.dev/api/planets");
     if (!response3.ok) {
@@ -35,4 +35,6 @@ async function getAllCount() {
   }
 }
 
-getAllCount();
+document.addEventListener("DOMContentLoaded", () => {
+  getAllCount();
+});

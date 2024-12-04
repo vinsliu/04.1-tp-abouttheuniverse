@@ -1,9 +1,10 @@
 const planetList = document.querySelector("#planetList ul");
+const selectedPlanet = document.querySelector("#list li a");
 
 async function getPlanetList() {
   // URL de l'api
   let uri = "https://swapi.dev/api/planets";
-  //   Créer un tableau pour stocker la liste des planètes
+  // Créer un tableau pour stocker la liste des planètes
   const allPlanets = [];
   // Effectuer la connexion
   try {
@@ -22,25 +23,44 @@ async function getPlanetList() {
       .map(
         (planet) => `
         <li>
-            <a href='#'>
-                <p>${planet.name}</p> <p>${planet.terrain}</p>
+            <a href='#' class='planetLink'>
+                <p class='planetName'>${planet.name}</p> <p>${planet.terrain}</p>
             </a>
         </li>`
       )
       .join("");
 
-    const response = await fetch(uri);
-    const data = await response.json();
     document.querySelector(
       "#planetCount"
-    ).innerHTML += `${data.count} résultat(s)`;
+    ).innerText = `${allPlanets.length} résultat(s)`;
+
+    const planetLink = document.querySelectorAll(".planetLink");
+    planetLink.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const planetName = e.target
+          .closest("a")
+          .querySelector(".planetName").innerText;
+        const planet = allPlanets.find((p) => p.name === planetName);
+        if (planet) {
+          getSelectedPlanet(planet);
+        }
+      });
+    });
   } catch (error) {
     console.error("Erreur :", error);
   }
 }
 
-async function getSelectedPlanet() {
-  let uri = "https://swapi.dev/api/planets";
+function getSelectedPlanet(planet) {
+  document.querySelector("#planetName").innerText = `${planet.name}`;
+  document.querySelector("#population").innerText = `${planet.population}`;
+  document.querySelector("#diameter").innerText = `${planet.diameter}`;
+  document.querySelector("#climate").innerText = `${planet.climate}`;
+  document.querySelector("#gravity").innerText = `${planet.gravity}`;
+  document.querySelector("#terrain").innerText = `${planet.terrain}`;
 }
 
-getPlanetList();
+document.addEventListener("DOMContentLoaded", () => {
+  getPlanetList();
+});

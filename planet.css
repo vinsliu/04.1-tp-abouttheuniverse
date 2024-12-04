@@ -76,6 +76,10 @@ nav a {
 #planetList ul {
   height: 40rem;
   overflow: scroll;
+  margin: 1rem 0;
+}
+#planetList ul::-webkit-scrollbar {
+  display: none; /* Désactive le scrollbar */
 }
 #planetList .listHead {
   display: flex;
@@ -87,14 +91,34 @@ nav a {
 #planetList li a {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   padding: 0.2rem;
   margin: 0.2rem;
   &:hover {
     background-color: #8aa9e3;
   }
 }
+#planetCount {
+  padding: 0.5rem;
+}
 
 #planetSelected {
   border: 1px solid #fff;
+  margin: 1rem;
+  padding: 1rem;
+}
+#planetSelected h2 {
+  padding: 0.5rem;
+}
+#grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1rem;
+}
+
+#moreBtn {
+  display: block;
+  border: 1px solid #fff;
+  padding: 0.5rem;
   margin: 1rem;
 }

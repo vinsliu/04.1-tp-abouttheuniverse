@@ -99,12 +99,36 @@
         <h2>Planètes</h2>
         <select name="" id=""></select>
         <input type="text" />
-        <ul>
-            <li class="listHead"><p>Nom</p><p>Terrain</p></li>
-        </ul>
-        <p id="planetCount"></p>
+        <div class="listHead">
+          <p>Nom</p>
+          <p>Terrain</p>
+        </div>
+        <ul id="list"></ul>
+        <span id="planetCount"></span>
       </section>
-      <section id="planetSelected"></section>
+      <section id="planetSelected">
+        <h2 id="planetName"></h2>
+        <p>Population : <span id="population"></span></p>
+        <div id="grid">
+          <p>
+            Diamètre <br />
+            <span id="diameter"></span>
+          </p>
+          <p>
+            Climat <br />
+            <span id="climate"></span>
+          </p>
+          <p>
+            Gravité <br />
+            <span id="gravity"></span>
+          </p>
+          <p>
+            Terrain <br />
+            <span id="terrain"></span>
+          </p>
+        </div>
+        <a href="#" id="moreBtn">En savoir plus</a>
+      </section>
     </section>
 
     <script src="planet.js"></script>
