@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TP : About the universe</title>
-    <link rel="stylesheet" href="index.css" />
+    <title>Planets</title>
+    <link rel="stylesheet" href="planet.css" />
   </head>
   <body>
     <header>
@@ -21,14 +21,14 @@
             <path
               class="fill-white"
               d="M37.5,30.5H10.9v-6.6h34.3c-0.9-2.8-3.8-5.4-8.9-5.4H11.4c-5.7,0-9,2.1-9,6.7v4.9c0,4,3.4,6.3,8.4,6.3h26.9v7H1.5
-              c0.9,3.8,3.8,5.8,9,5.8h27.1c5.7,0,8.5-2.2,8.5-6.9v-4.9C46.1,33.1,42.8,30.8,37.5,30.5z"
+                c0.9,3.8,3.8,5.8,9,5.8h27.1c5.7,0,8.5-2.2,8.5-6.9v-4.9C46.1,33.1,42.8,30.8,37.5,30.5z"
             ></path>
           </g>
           <g class="letter_p">
             <path
               class="fill-white"
               d="M91.8,18.6H59v30.7h9.3V37.5h24.2c6.7,0,10.4-2.3,10.4-7.7v-3.4C102.8,21.4,98.6,18.6,91.8,18.6z M94.8,28.4
-              c0,2.2-0.4,3.4-4,3.4H68.3l0.1-8h22c4,0,4.5,1.2,4.5,3.3V28.4z"
+                c0,2.2-0.4,3.4-4,3.4H68.3l0.1-8h22c4,0,4.5,1.2,4.5,3.3V28.4z"
             ></path>
           </g>
           <g class="letter_a">
@@ -41,7 +41,7 @@
             <path
               class="fill-white"
               d="M171.4,23.9h34.8c-0.9-3.6-4.4-5.4-9.4-5.4h-26c-4.5,0-8.8,1.8-8.8,6.7v17.2c0,4.9,4.3,6.7,8.8,6.7h26.3
-              c6,0,8.1-1.7,9.1-5.8h-34.8V23.9z"
+                c6,0,8.1-1.7,9.1-5.8h-34.8V23.9z"
             ></path>
           </g>
           <g class="letter_e">
@@ -93,42 +93,19 @@
         </li>
       </ul>
     </nav>
+
     <section class="container">
-      <section id="about">
-        <h2>ABOUT THE UNIVERSE</h2>
-        <p>
-          Bienvenue sur <a href="">ABOUT THE UNIVERSE</a> pour découvrir toutes
-          nos découvertes à propos du monde qui nous entoure !
-        </p>
-        <a href="" id="discBtn">Découvrir</a>
-      </section>
-      <section id="numbers">
-        <h2>LES CHIFFRES</h2>
-        <p>
-          Nous nous efforcons à archiver toutes nos trouvailles pour vous les
-          partager autant que possible !
-        </p>
+      <section id="planetList">
+        <h2>Planètes</h2>
+        <select name="" id=""></select>
+        <input type="text" />
         <ul>
-          <li>
-            Nombres d'êtres vivants recensés <br />
-            <span class="ajax" id="person"></span>
-          </li>
-          <li>
-            Nombres de véhicules recensés <br />
-            <span class="ajax" id="vehicule"></span>
-          </li>
-          <li>
-            Nombres de planètes recensés <br />
-            <span class="ajax" id="planet"></span>
-          </li>
-          <li>
-            Prochaine mission <br />
-            <span class="ajax">10 mai 2026</span>
-          </li>
+            <li class="listHead"><p>Nom</p><p>Terrain</p></li>
         </ul>
-        <a href="" id="missionBtn">Participer à la prochaine mission</a>
       </section>
+      <section id="planetSelected"></section>
     </section>
-    <script src="index.js"></script>
+
+    <script src="planet.js"></script>
   </body>
 </html>
