@@ -1,9 +1,8 @@
-const allPlanets = [];
+const allPlanets = []; // Créer un tableau pour stocker les informations
 
 async function getPlanetList() {
   // URL de l'api
   let uri = "https://swapi.dev/api/planets";
-  // Créer un tableau pour stocker la liste des planètes
   // Effectuer la connexion
   try {
     // Boucle pour récupérer les informations dans chaque pages
@@ -27,6 +26,7 @@ async function getPlanetList() {
   }
 }
 
+// Fonction pour afficher la liste des planètes
 function displayPlanetList(planets = allPlanets) {
   const planetList = document.querySelector("#planetList ul");
   planetList.innerHTML = planets.map(createPlanetListItem).join("");
@@ -47,6 +47,7 @@ function displayPlanetList(planets = allPlanets) {
   });
 }
 
+// Fonction pour créer un élément pour chaque planètes
 function createPlanetListItem(planet) {
   return `
     <li>
@@ -57,6 +58,7 @@ function createPlanetListItem(planet) {
   `;
 }
 
+// Fonction pour filtrer la liste
 function populationFilter() {
   const popFilter = document.querySelector("#populationFilter").value;
   let filterOn;
@@ -91,6 +93,7 @@ function populationFilter() {
   ).innerText = `${filterOn.length} résultat(s)`;
 }
 
+// Fonction pour afficher les données de la planète sélectionnée
 function getSelectedPlanet(planet) {
   document.querySelector("#planetName").innerText = `${planet.name}`;
   document.querySelector(
@@ -110,6 +113,7 @@ function getSelectedPlanet(planet) {
   ).innerHTML = `Terrain <br> ${planet.terrain}`;
 }
 
+// Lancer les scripts après chargement du contenu de la page
 document.addEventListener("DOMContentLoaded", () => {
   getPlanetList();
   document
