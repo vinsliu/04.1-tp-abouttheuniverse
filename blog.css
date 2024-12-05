@@ -1,0 +1,51 @@
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+header {
+  border: 1px solid #fff;
+  height: 4rem;
+}
+#logo {
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  width: 210px;
+  height: auto;
+}
+#logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#logo .fill-white {
+  fill: #fff;
+}
+header ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 1rem 0 0 16rem;
+  font-size: 1.5rem;
+}
+
+nav {
+  position: absolute;
+  border: 1px solid #fff;
+  width: 6rem;
+  height: 100dvh;
+}
+nav a {
+  display: block;
+  background-color: #182235;
+  width: 5rem;
+  height: 5rem;
+  text-align: center;
+  margin: 0.5rem auto;
+}
+
+.container {
+  display: flex;
+  margin: 0rem 0 0 10rem;
+}
