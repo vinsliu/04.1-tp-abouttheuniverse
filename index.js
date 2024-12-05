@@ -1,3 +1,4 @@
+// Fonction asynchrone pour afficher les co
 async function getDisplayCount(url, element) {
   element.innerText = "Chargement...";
   try {
@@ -14,10 +15,10 @@ async function getDisplayCount(url, element) {
 
 document.addEventListener("DOMContentLoaded", async function () {
   const personCount = document.querySelector("#person");
-  const vehiculeCount = document.querySelector("#vehicule");
+  const vehicleCount = document.querySelector("#vehicle");
   const planetCount = document.querySelector("#planet");
 
   await getDisplayCount("https://swapi.dev/api/people", personCount);
-  await getDisplayCount("https://swapi.dev/api/vehicles", vehiculeCount);
+  await getDisplayCount("https://swapi.dev/api/vehicles", vehicleCount);
   await getDisplayCount("https://swapi.dev/api/planets", planetCount);
 });

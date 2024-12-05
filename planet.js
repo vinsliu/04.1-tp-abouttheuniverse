@@ -19,16 +19,7 @@ async function getPlanetList() {
       uri = data.next;
     }
     // Affiche les informations pour chaque planètes
-    planetList.innerHTML += allPlanets
-      .map(
-        (planet) => `
-        <li>
-            <a href='#' class='planetLink'>
-                <p class='planetName'>${planet.name}</p> <p>${planet.terrain}</p>
-            </a>
-        </li>`
-      )
-      .join("");
+    planetList.innerHTML += allPlanets.map(createPlanetListItem).join("");
 
     document.querySelector(
       "#planetCount"
@@ -52,6 +43,16 @@ async function getPlanetList() {
   } catch (error) {
     console.error("Erreur :", error);
   }
+}
+
+function createPlanetListItem(planet) {
+  return `
+    <li>
+        <a href='#' class='planetLink'>
+            <p class='planetName'>${planet.name}</p> <p>${planet.terrain}</p>
+        </a>
+    </li>
+  `;
 }
 
 function getSelectedPlanet(planet) {
