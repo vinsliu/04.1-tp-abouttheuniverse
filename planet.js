@@ -1,11 +1,9 @@
-const planetList = document.querySelector("#planetList ul");
-const selectedPlanet = document.querySelector("#list li a");
+const allPlanets = [];
 
 async function getPlanetList() {
   // URL de l'api
   let uri = "https://swapi.dev/api/planets";
   // Créer un tableau pour stocker la liste des planètes
-  const allPlanets = [];
   // Effectuer la connexion
   try {
     // Boucle pour récupérer les informations dans chaque pages
@@ -18,31 +16,35 @@ async function getPlanetList() {
       allPlanets.push(...data.results);
       uri = data.next;
     }
-    // Affiche les informations pour chaque planètes
-    planetList.innerHTML += allPlanets.map(createPlanetListItem).join("");
-
+    // Affiche la liste des planètes
+    displayPlanetList(allPlanets);
+    // Affiche le nombre de planètes
     document.querySelector(
       "#planetCount"
     ).innerText = `${allPlanets.length} résultat(s)`;
-
-    const planetLink = document.querySelectorAll(".planetLink");
-    planetLink.forEach((link) => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        const planetName = e.target
-          .closest("a")
-          .querySelector(".planetName").innerText;
-        document.querySelector("#moreBtn").style.display = "block";
-
-        const planet = allPlanets.find((p) => p.name === planetName);
-        if (planet) {
-          getSelectedPlanet(planet);
-        }
-      });
-    });
   } catch (error) {
     console.error("Erreur :", error);
   }
+}
+
+function displayPlanetList(planets = allPlanets) {
+  const planetList = document.querySelector("#planetList ul");
+  planetList.innerHTML = planets.map(createPlanetListItem).join("");
+  const planetLink = document.querySelectorAll(".planetLink");
+  planetLink.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const planetName = e.target
+        .closest("a")
+        .querySelector(".planetName").innerText;
+      document.querySelector("#moreBtn").style.display = "block";
+
+      const planet = allPlanets.find((p) => p.name === planetName);
+      if (planet) {
+        getSelectedPlanet(planet);
+      }
+    });
+  });
 }
 
 function createPlanetListItem(planet) {
@@ -53,6 +55,40 @@ function createPlanetListItem(planet) {
         </a>
     </li>
   `;
+}
+
+function populationFilter() {
+  const popFilter = document.querySelector("#populationFilter").value;
+  let filterOn;
+  switch (popFilter) {
+    case "1":
+      filterOn = allPlanets.filter(
+        (planet) =>
+          parseInt(planet.population) >= 0 &&
+          parseInt(planet.population) <= 100000
+      );
+      break;
+    case "2":
+      filterOn = allPlanets.filter(
+        (planet) =>
+          parseInt(planet.population) > 100000 &&
+          parseInt(planet.population) <= 100000000
+      );
+      break;
+    case "3":
+      filterOn = allPlanets.filter(
+        (planet) => parseInt(planet.population) > 100000000
+      );
+      break;
+    default:
+      filterOn = allPlanets;
+      break;
+  }
+  displayPlanetList(filterOn);
+
+  document.querySelector(
+    "#planetCount"
+  ).innerText = `${filterOn.length} résultat(s)`;
 }
 
 function getSelectedPlanet(planet) {
@@ -76,4 +112,7 @@ function getSelectedPlanet(planet) {
 
 document.addEventListener("DOMContentLoaded", () => {
   getPlanetList();
+  document
+    .querySelector("#populationFilter")
+    .addEventListener("change", populationFilter);
 });
