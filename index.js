@@ -1,5 +1,6 @@
 // Fonction asynchrone pour afficher les co
 async function getDisplayCount(url, element) {
+  // Affiche ce message pendant qu'il récupère les informations
   element.innerText = "Chargement...";
   try {
     const response = await fetch(url);
