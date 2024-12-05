@@ -10,9 +10,6 @@ async function getDisplayCount(url, element) {
       throw new Error("Network error !");
     }
     const data = await response.json();
-    if (typeof data.count !== "number") {
-      throw new Error("Données invalides !");
-    }
     element.innerText = `${data.count}`;
   } catch (error) {
     console.error(error);
