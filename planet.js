@@ -54,11 +54,21 @@ async function getPlanetList() {
 
 function getSelectedPlanet(planet) {
   document.querySelector("#planetName").innerText = `${planet.name}`;
-  document.querySelector("#population").innerText = `${planet.population}`;
-  document.querySelector("#diameter").innerText = `${planet.diameter}`;
-  document.querySelector("#climate").innerText = `${planet.climate}`;
-  document.querySelector("#gravity").innerText = `${planet.gravity}`;
-  document.querySelector("#terrain").innerText = `${planet.terrain}`;
+  document.querySelector(
+    "#population"
+  ).innerHTML = `Population : ${planet.population}`;
+  document.querySelector(
+    "#diameter"
+  ).innerHTML = `Diamètre <br> ${planet.diameter}`;
+  document.querySelector(
+    "#climate"
+  ).innerHTML = `Climat <br> ${planet.climate}`;
+  document.querySelector(
+    "#gravity"
+  ).innerHTML = `Gravité <br> ${planet.gravity}`;
+  document.querySelector(
+    "#terrain"
+  ).innerHTML = `Terrain <br> ${planet.terrain}`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {

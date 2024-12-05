@@ -2,39 +2,35 @@ const personCount = document.querySelector("#person");
 const vehiculeCount = document.querySelector("#vehicule");
 const planetCount = document.querySelector("#planet");
 
-async function getAllCount() {
+async function getDisplayCount(url, element) {
+  element.innerText = "Chargement...";
   try {
-    // Récupérer les informations pour le nombre de personnes
-    const response1 = await fetch("https://swapi.dev/api/people");
-    if (!response1.ok) {
+    const response = await fetch(url);
+    if (!response.ok) {
       throw new Error("Network error !");
     }
-    const data1 = await response1.json();
-    // Afficher le nombre
-    personCount.innerText = `${data1.count}`;
-
-    // Récupérer les informations pour le nombre de véhicules
-    const response2 = await fetch("https://swapi.dev/api/vehicles");
-    if (!response2.ok) {
-      throw new Error("Network error !");
+    const data = await response.json();
+    if (typeof data.count !== "number") {
+      throw new Error("Données invalides !");
     }
-    const data2 = await response2.json();
-    // Afficher le nombre
-    vehiculeCount.innerText = `${data2.count}`;
-
-    // Récupérer les informations pour le nombre de planètes
-    const response3 = await fetch("https://swapi.dev/api/planets");
-    if (!response3.ok) {
-      throw new Error("Network error !");
-    }
-    const data3 = await response3.json();
-    // Afficher le nombre
-    planetCount.innerText = `${data3.count}`;
+    element.innerText = `${data.count}`;
   } catch (error) {
-    console.error("Erreur : ", error);
+    console.error(error);
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  getAllCount();
+document.addEventListener("DOMContentLoaded", function () {
+  const counters = [
+    { url: "https://swapi.dev/api/people", element: personCount },
+    { url: "https://swapi.dev/api/vehicles", element: vehiculeCount },
+    { url: "https://swapi.dev/api/planets", element: planetCount },
+  ];
+
+  Promise.all(
+    counters.map(({ url, element }) => getDisplayCount(url, element))
+  ).catch(handleGlobalError);
 });
+
+function handleGlobalError(error) {
+  console.error("Erreur globale : ", error);
+}
