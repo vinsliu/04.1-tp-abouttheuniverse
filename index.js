@@ -1,7 +1,3 @@
-const personCount = document.querySelector("#person");
-const vehiculeCount = document.querySelector("#vehicule");
-const planetCount = document.querySelector("#planet");
-
 async function getDisplayCount(url, element) {
   element.innerText = "Chargement...";
   try {
@@ -16,18 +12,12 @@ async function getDisplayCount(url, element) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const counters = [
-    { url: "https://swapi.dev/api/people", element: personCount },
-    { url: "https://swapi.dev/api/vehicles", element: vehiculeCount },
-    { url: "https://swapi.dev/api/planets", element: planetCount },
-  ];
+document.addEventListener("DOMContentLoaded", async function () {
+  const personCount = document.querySelector("#person");
+  const vehiculeCount = document.querySelector("#vehicule");
+  const planetCount = document.querySelector("#planet");
 
-  Promise.all(
-    counters.map(({ url, element }) => getDisplayCount(url, element))
-  ).catch(handleGlobalError);
+  await getDisplayCount("https://swapi.dev/api/people", personCount);
+  await getDisplayCount("https://swapi.dev/api/vehicles", vehiculeCount);
+  await getDisplayCount("https://swapi.dev/api/planets", planetCount);
 });
-
-function handleGlobalError(error) {
-  console.error("Erreur globale : ", error);
-}
