@@ -73,8 +73,25 @@ nav a {
 #planetList h2 {
   margin: 0.5rem;
 }
+#populationFilter {
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #325eb0;
+  color: #fff;
+  cursor: pointer;
+}
+#searchPlanet {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #325eb0;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #fff;
+}
 #planetList ul {
-  height: 40rem;
+  height: 30rem;
   overflow: scroll;
   margin: 1rem 0;
 }
@@ -96,6 +113,7 @@ nav a {
   margin: 0.2rem;
   &:hover {
     background-color: #8aa9e3;
+    cursor: pointer;
   }
 }
 #planetCount {
@@ -106,19 +124,28 @@ nav a {
   border: 1px solid #fff;
   margin: 1rem;
   padding: 1rem;
+  width: 55rem;
+  max-height: 20rem;
 }
 #planetSelected h2 {
   padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+#population {
+  margin: 0 0 1rem;
 }
 #grid {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 1rem;
+  margin: 2rem 0;
 }
 
 #moreBtn {
-  display: block;
+  display: none;
   border: 1px solid #fff;
   padding: 0.5rem;
-  margin: 1rem;
+  margin: 1rem 1rem 1rem 45rem;
+  width: 8rem;
+  text-align: center;
 }

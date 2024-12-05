@@ -97,8 +97,11 @@
     <section class="container">
       <section id="planetList">
         <h2>Planètes</h2>
-        <select name="" id=""></select>
-        <input type="text" />
+        <select name="populationFilter" id="populationFilter">
+          <option value="">Par population</option>
+        </select>
+        <br />
+        <input type="text" id="searchPlanet"/>
         <div class="listHead">
           <p>Nom</p>
           <p>Terrain</p>
@@ -106,6 +109,7 @@
         <ul id="list"></ul>
         <span id="planetCount"></span>
       </section>
+
       <section id="planetSelected">
         <h2 id="planetName"></h2>
         <p id="population"></p>
